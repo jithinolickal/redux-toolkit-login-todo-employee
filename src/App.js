@@ -2,24 +2,25 @@ import React from "react";
 // import "./App.css";
 import Todolist from "./components/todo/Todolist";
 import Employee from "./components/employee/Employee";
-import { Redirect, Route, Switch } from "react-router";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import Login from "./components/login/Login";
 import { useSelector } from "react-redux";
 import { loginSelector } from "./redux-slice/loginSlice";
 
 function App() {
-  const user = useSelector(loginSelector);
+  const userData = useSelector(loginSelector);
+  const history = useHistory();
 
   const handleLoginDeniedMessage = () => {
     // alert("Invalid username or password")
     return <Login />;
   };
-  console.log("aa", user[0].id);
-  console.log("aa", user[0].length);
-  console.log("aa", user[0].length > 0);
+  console.log("aa", userData[0].id);
+  console.log("aa", userData[0].length);
+  console.log("aa", userData[0].length > 0);
   return (
     <div className="App">
-      {/* {user[0].id ? <Employee /> :handleLoginDeniedMessage()} */}
+      {userData[0].id ? (history.push('/Employee')) :(history.push('/login'))}
 
       <Switch>
         <Route path="/" exact>

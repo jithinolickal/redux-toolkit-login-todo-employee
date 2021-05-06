@@ -37,6 +37,7 @@ const loginSlice = createSlice({
       } else {
         state.invalidLogin = false;
       }
+
     },
 
     signUp: (state, {payload}) => {
@@ -59,10 +60,14 @@ const loginSlice = createSlice({
         ) 
 
     },
+
+    logout: (state,{ payload }) => {
+      state.userData[0] = {}
+    },
   },
 });
 
-export const { login, signUp } = loginSlice.actions;
+export const { login, signUp, logout } = loginSlice.actions;
 
 export const loginSelector = (state) => state.login.userData;
 export const invalidLoginSelector = (state) => state.login.invalidLogin;

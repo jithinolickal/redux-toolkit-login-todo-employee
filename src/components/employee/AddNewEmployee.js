@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form, Input, Radio } from "antd";
 import axios from "axios";
-import { userContext } from "../userContext";
-import { OmitProps } from "antd/lib/transfer/ListBody";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  employeeSelector,
+  saveEmployees,
+} from "../../redux-slice/employeeSlice";
 
 const CollectionCreateForm = ({ visible, onCreate, onCancel, isSaving }) => {
   const [form] = Form.useForm();
@@ -94,92 +97,59 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel, isSaving }) => {
 const AddNewEmployee = (props) => {
   const [visible, setVisible] = useState(false);
   const [savingMsg, setSavingMsg] = useState(false);
+  const dispatch = useDispatch();
+  const apiData = useSelector(employeeSelector);
+
   let fetchData = {};
-  const onCreate = (values) => {
+  const onCreate = async (values) => {
+    // const id = Math.random();
+    const name = values.name;
+    const age = Number(values.age);
+    const address = values.address;
+    const experience = Number(values.experience);
+
     console.log("Received values of form: ", values);
 
-    /* const dummyData = {
-      // "id" : Math.random(),
-      "name" : "luke",
-      "age" : 6,
-      "address" : "India",
-      "experience" : 2
-    }
- */
-
-     /* function postEmployeeData(){
-      try {
-         axios.post(
-          `http://localhost:8080/api/addEmployee`,
-          values
-        ).then( (ress) =>{
-          console.log("ress",ress);
-          sendGetRequestEmployeeData();
-        })
+    //Add New Employee
+    try {
+      axios.post('https://rocky-bastion-69722.herokuapp.com/create', {
+        name: name,
+        age: age,
+        address: address,
+        experience: experience
+      })
+      .then(function (response) {
+        console.log(response);
+        //Update redux state
+        dispatch(
+          saveEmployees([
+            ...apiData,
+            {
+              id: response.data.message,
+              name: name,
+              age: age,
+              address: address,
+              experience: experience,
+            },
+          ])
+          );
         
-      } catch (err) {
-        console.log(err);
-      }
+      });
+    } catch (error) {
+      console.log("POST request Error : ", error);
     }
-    postEmployeeData();
-    
-    setSavingMsg(true); */
-    
-    
-   /*   function sendGetRequestEmployeeData  ()  {
-      try {
-        axios.get(
-          "http://localhost:8080/api/getAllEmployees"
-        ).then(function (re) {
-          console.log("re",re);
-          fetchData = re.data;
-          if(fetchData){
-            setapiData(fetchData);
-          }
-          console.log("started save");
-          console.log(fetchData);
-          console.log("End save");
-  
-          console.log("Inside the timer2")
-        props.refreshDataProp();
-        setSavingMsg(false);
-        })
-
-      } catch (err) {
-        console.error(err);
-      }
-    }; */
-    // const sendGetRequestEmployeeData = async () => {
-    //   try {
-    //     const response = await axios.get(
-    //       "http://localhost:8080/api/getAllEmployees"
-    //     ).then(function (re) {
-    //       console.log("re",re);
-    //       fetchData = re.data;
-    //       if(fetchData){
-    //         setapiData(fetchData);
-    //       }
-    //     })
-
-    //     // console.log(response.data);
-    //     console.log("started save");
-    //     // fetchData = response.data;
-    //     console.log(fetchData);
-    //     console.log("End save");
-
-    //     console.log("Inside the timer2")
-    //     // setVisible(false);
-    //   // setapiData(fetchData);
-    //   props.refreshDataProp();
-    //   setSavingMsg(false);
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // };
-    // sendGetRequestEmployeeData();
 
 
-    
+    // const postResponse = await postEmployee(values);
+    // const postResponse = await postEmployee(values).then(res=>{
+    //   console.log("sssss",res)
+    // });
+
+
+    //   console.log("asd",postResponse);
+ 
+
+
     setVisible(false);
   };
 

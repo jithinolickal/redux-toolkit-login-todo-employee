@@ -58,7 +58,7 @@ function Employee() {
             <Header />
           </Row>
           <Switch>
-            <Route path="/" exact>
+            <Route path="/Employee" exact>
               <Redirect to="/Employee/Dashboard" />
             </Route>
             <Route path="/Employee/Dashboard">

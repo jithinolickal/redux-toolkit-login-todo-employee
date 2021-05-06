@@ -8,9 +8,9 @@
   },
   {
     "id": 1,
-    "name": "aaa a",
-    "email": "a",
-    "password": "a",
+    "name": "test",
+    "email": "test",
+    "password": "test",
     "isLoggedIn": false
   }
 ]

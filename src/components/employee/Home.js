@@ -4,7 +4,6 @@ import DataTable from "./DataTable";
 import BarGraph from "./BarGraph";
 import PieChart from "./PieChart";
 import AddNewEmployee from "./AddNewEmployee";
-import { useContext, useState } from "react";
 
 function Home() {
   return (
