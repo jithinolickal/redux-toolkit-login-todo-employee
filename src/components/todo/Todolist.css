@@ -1,0 +1,78 @@
+.main-container{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #ffb700cc;
+  height: 80%;
+  width: 50%;
+  border-radius: 15px;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: end; */
+  flex-direction: column;
+}
+
+.title{
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.input-div {
+  display: flex;
+  padding: 12px;
+}
+
+.text-input {
+  flex: 1;
+  padding: 5px;
+  border-radius: 10px;
+  outline: none;
+  border-style: none;
+  width: 100%;
+}
+
+.btn-save {
+  margin: 0 5px;
+  border-radius: 10px;
+  border-style: none;
+  color: blueviolet;
+  outline: none;
+}
+
+.btn-save:hover {
+  background-color: tomato;
+}
+
+.output-div {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+}
+.todoItem-div {
+  display: flex;
+  align-items: center;
+  background-color: #ffe8ad;
+  border-radius: 3px;
+  margin: 5px 0;
+}
+
+.strike-text {
+  text-decoration: line-through;
+}
+
+.x-close-container{
+  margin-left: auto;
+}
+.x-close{
+  padding: 0 3px;
+    background-color: #d69a40;
+    color: white;
+    cursor: pointer;
+}

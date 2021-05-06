@@ -1,0 +1,50 @@
+.App {
+  height: 100vh;
+}
+
+.login-container {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  /* background-color: #f5f3f3; */
+  /* border: 5px; */
+}
+
+.form-container {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  background-color: #f5f3f3;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.text-input {
+  width: 250px;
+  height: 50px;
+  border: 1px solid lightgrey;
+  border-radius: 100vh;
+  padding: 4px;
+  margin-bottom: 10px;
+}
+
+.login-btn {
+  border: 1px solid deepskyblue;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 100vh;
+  cursor: pointer;
+}
+.login-btn:hover{
+    background-color: deepskyblue;
+}
+
+.register-signup-text {
+  text-align: center;
+}
+
+.signup-span {
+  color: deepskyblue;
+  cursor: pointer;
+}
